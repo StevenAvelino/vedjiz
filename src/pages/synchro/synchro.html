@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Vedjiz</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let product of dataProvider.products">
+    <ion-card *ngIf="product.updated == true" (click)="details(product)">
+      <img src="{{ product.picture }}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{ product.productName }}
+        </ion-card-title>
+        {{ product.price }} par {{ product.unit }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <button ion-button (click)="uploadData()">
+    Update
+  </button>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle left>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Your name</h3>
+
+  <form [formGroup]="settingsForm">
+    <ion-label stacked>Nom</ion-label>
+    <ion-input formControlName="name" type="text"></ion-input>
+  </form>
+
+  <div *ngIf="settingsForm.dirty">
+    <button ion-button (click)="save()">Save</button>
+    <button ion-button (click)="cancel()">Cancel</button>
+  </div>
+</ion-content>
+  
+  

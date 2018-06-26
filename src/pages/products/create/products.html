@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ajout produit
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="createProduct()">
+    <ion-item>
+      <ion-label>Nom du produit</ion-label>
+      <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prix du produit</ion-label>
+      <ion-input type="text" [(ngModel)]="price" name="price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Unité du produit</ion-label>
+      <ion-input type="text" [(ngModel)]="unit" name="unit"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>

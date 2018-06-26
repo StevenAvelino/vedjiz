@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle left>
+      <ion-icon class="hamburger-menu" name="md-menu"></ion-icon>
+    </button>
     <ion-title>
-      Ionic Blank
+      Vedjiz
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let product of dataProvider.products" (click)="details(product)">
+      <img class="veggieImage" src="{{ product.picture }}"/>
+      {{ product.productName }} ({{ product.price }}.- par {{ product.unit }})
+      <ion-icon name="alert" *ngIf="product.stock <= product.low_stock_threshold"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-fab bottom right>
+  <button ion-fab color="primary" (click)="setLastUpdate()">Button</button>
+</ion-fab>
+
+<ion-fab bottom left>
+  <button ion-fab color="primary" (click)="getProducts()">Button</button>
+</ion-fab>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Vedjiz</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>{{ product.productName }}</h3>
+  <img src="assets/imgs/{{ product.imageFileName }}" /><br />
+
+  <form [formGroup]="productForm">
+    <ion-label stacked>Prix</ion-label>
+    <ion-input formControlName="price" type="number" step="0.01"></ion-input>
+  
+    <ion-label stacked>Unité</ion-label>
+    <ion-input formControlName="unit" type="text" ></ion-input>
+
+    <ion-label stacked>Stock</ion-label>
+    <ion-input formControlName="stock" type="text" ></ion-input>
+  </form>
+  <div *ngIf="productForm.dirty">
+    <button ion-button (click)="save()">Save</button>
+    <button ion-button (click)="cancel()">Cancel</button>
+  </div>
+  <h4>Fournisseur</h4>
+  <ion-list *ngIf="product.suppliers.length > 0">
+    <ion-item *ngFor="let supplier of product.suppliers">
+      {{ supplier.companyName }}
+    </ion-item>
+  </ion-list>
+  <p *ngIf="product.suppliers.length == 0">Aucun fournisseur</p>
+</ion-content>
